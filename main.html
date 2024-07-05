@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://localhost:3000/submit" method="post">
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required>
+      
+        <label for="number">학번:</label>
+        <input type="number" id="number" name="number" required>
+      
+        <label for="vote">투표:</label>
+        <input type="number" min="1" max="2" id="vote" name="vote" required>
+      
+        <button type="submit">Submit</button>
+      </form>
+      
+      <script>
+        function getCookie(name) {
+          // 쿠키 문자열에서 특정 쿠키 값을 찾는 함수
+          var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+          return value ? value[2] : null;
+        }
+    
+        window.onload = function() {
+          // 페이지 로드 시 쿠키 값 출력
+          var cookie1Value = getCookie('name');
+          var cookie2Value = getCookie('number');
+    
+          document.getElementById('name').textContent = cookie1Value;
+          document.getElementById('number').textContent = cookie2Value;
+          document.getElementById("name").value = decodeURIComponent(cookie1Value)
+          document.getElementById("number").value = cookie2Value
+        };
+      </script>    
+</body>
+</html>
